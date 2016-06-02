@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>JOMI - clicky API</title>
+  </head>
+  <body>
+    <div class = "container">
+        <h3>Jomi Analytics</h3>
+        {%for item in jcform2%}
+          <ul>
+          <li>organization: {{item.org}}</li>
+          <li>session id:   {{item.si}}</li>
+          <li>ip address:   {{item.ip}}</li>
+          <li>time normal:   {{item.timep}}</li>
+          <li>location:   {{item.geol}}</li>
+          <p>____________</p>
+        </ul>
+        {% endfor %}
+    <div>
+  </body>
+</html>

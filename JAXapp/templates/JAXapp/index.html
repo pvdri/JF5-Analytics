@@ -1,0 +1,17 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JOMI - clicky API</title>
+</head>
+
+<div class = "container">
+    <h3>Jomi Analytics</h3>
+<body>
+  <form action="form_view" method="post">
+    {% csrf_token %}
+    {{jcform.as_p}}
+  <input type="submit" value="OK">
+   </form>
+</div>
+</body>
+</html>
