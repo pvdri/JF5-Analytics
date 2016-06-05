@@ -3,9 +3,10 @@ import requests
 import sqlite3
 from models import analytics, jcanalytics
 
+
 def populate():
     url = 'https://api.clicky.com/api/stats/4?site_id=100716069&sitekey=93c104e29de28bd9&type=visitors-list'
-    date = '&date=last-3-days'
+    date = '&date=last-30-days'
     limit = '&limit=all'
     output = '&output=json'
     total = url+date+limit+output
@@ -16,10 +17,18 @@ def populate():
     for item in data[0]['dates'][0]['items']:
         si = item["session_id"]
         ip = item["ip_address"]
-        org = item["organization"]
         time = item["time"]
         timep = item["time_pretty"]
-        geol = item["geolocation"]
+        # geol = item["geolocation"]
+        # org = item["organization"]
+        if item.has_key("geolocation"):
+            geol = item["geolocation"]
+        else:
+            geol = ""
+        if item.has_key("organization"):
+            org = item["organization"]
+        else:
+            org = ""
         add_entry(si,ip,org,time,timep,geol)
         add_jcentry(org)
 
